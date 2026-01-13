@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Web Calculator</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Calculator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body class="dark">
 
 <header>
-  <h1>Smart Calculator</h1>
-  <button id="themeToggle">🌙</button>
+  <button id="fxToggle">fx</button>
+  <h1>Calculator</h1>
+  <button id="historyToggle">🕘</button>
 </header>
 
 <main>
   <div class="calculator">
 
-    <input type="text" id="display" disabled>
+    <input type="text" id="display" disabled />
 
-    <!-- EXTRA FUNCTIONS -->
-    <div class="buttons extra">
+    <!-- SPECIAL FUNCTIONS (fx) -->
+    <div id="special" class="buttons extra hidden">
       <button onclick="append('(')">(</button>
       <button onclick="append(')')">)</button>
       <button onclick="append('**')">xʸ</button>
       <button onclick="append('Math.sqrt(')">√</button>
+
+      <button onclick="append('Math.sin(')">sin</button>
+      <button onclick="append('Math.cos(')">cos</button>
+      <button onclick="append('Math.tan(')">tan</button>
+      <button onclick="append('Math.log10(')">log</button>
     </div>
 
-    <!-- MAIN BUTTONS -->
+    <!-- NORMAL CALCULATOR -->
     <div class="buttons">
       <button onclick="clearDisplay()">AC</button>
       <button onclick="deleteLast()">DEL</button>
@@ -53,12 +60,14 @@
       <button class="equal" onclick="calculate()">=</button>
     </div>
 
+    <!-- HISTORY PANEL -->
+    <div id="history" class="history hidden">
+      <div id="historyList"></div>
+      <button class="clear-history" onclick="clearHistory()">Clear History</button>
+    </div>
+
   </div>
 </main>
-
-<footer>
-  <p>BODMAS Supported • Dark / Light Mode</p>
-</footer>
 
 <script src="script.js"></script>
 </body>

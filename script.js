@@ -1,6 +1,17 @@
-let display = document.getElementById("display");
-let toggleBtn = document.getElementById("themeToggle");
+const display = document.getElementById("display");
+const special = document.getElementById("special");
+const historyPanel = document.getElementById("history");
+const historyList = document.getElementById("historyList");
 
+document.getElementById("fxToggle").onclick = () => {
+  special.classList.toggle("hidden");
+};
+
+document.getElementById("historyToggle").onclick = () => {
+  historyPanel.classList.toggle("hidden");
+};
+
+/* BASIC */
 function append(value) {
   display.value += value;
 }
@@ -13,19 +24,23 @@ function deleteLast() {
   display.value = display.value.slice(0, -1);
 }
 
+/* CALCULATION (BODMAS supported) */
 function calculate() {
   try {
-    display.value = eval(display.value); // BODMAS supported
+    const exp = display.value;
+    const result = eval(exp);
+
+    historyList.innerHTML += `
+      <div>${exp} = <b>${result}</b></div>
+    `;
+
+    display.value = result;
   } catch {
     display.value = "Error";
   }
 }
 
-/* DARK / LIGHT MODE */
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("light");
-  document.body.classList.toggle("dark");
-
-  toggleBtn.textContent =
-    document.body.classList.contains("dark") ? "🌙" : "☀️";
-});
+/* HISTORY */
+function clearHistory() {
+  historyList.innerHTML = "";
+}
