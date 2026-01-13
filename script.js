@@ -1,5 +1,5 @@
 let display = document.getElementById("display");
-let historyDiv = document.getElementById("history");
+let toggleBtn = document.getElementById("themeToggle");
 
 function append(value) {
   display.value += value;
@@ -15,16 +15,17 @@ function deleteLast() {
 
 function calculate() {
   try {
-    let expression = display.value;
-    let result = eval(expression);
-
-    historyDiv.innerHTML += `<div>${expression} = <b>${result}</b></div>`;
-    display.value = result;
+    display.value = eval(display.value); // BODMAS supported
   } catch {
     display.value = "Error";
   }
 }
 
-function toggleHistory() {
-  historyDiv.classList.toggle("hidden");
-}
+/* DARK / LIGHT MODE */
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  document.body.classList.toggle("dark");
+
+  toggleBtn.textContent =
+    document.body.classList.contains("dark") ? "🌙" : "☀️";
+});

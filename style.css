@@ -4,94 +4,147 @@
 
 body {
   margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #141e30, #243b55);
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.4s, color 0.4s;
 }
 
-.calculator {
-  width: 360px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 15px;
-  color: #fff;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+/* ================= THEMES ================= */
+
+body.dark {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #ffffff;
 }
 
-.top {
+body.light {
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  color: #000000;
+}
+
+/* ================= HEADER ================= */
+
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 18px 28px;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
-.history-btn {
-  background: none;
-  border: none;
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+#themeToggle {
   font-size: 22px;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
   cursor: pointer;
   color: #fff;
+  transition: 0.3s;
 }
+
+#themeToggle:hover {
+  background: rgba(255,255,255,0.45);
+}
+
+/* ================= MAIN ================= */
+
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+/* ================= CALCULATOR CARD ================= */
+
+.calculator {
+  width: 360px;
+  padding: 22px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+}
+
+/* ================= DISPLAY ================= */
 
 #display {
   width: 100%;
-  height: 60px;
-  font-size: 26px;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
+  height: 70px;
+  font-size: 30px;
   text-align: right;
+  padding: 12px;
+  border-radius: 16px;
+  border: none;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+  color: #000;
+  box-shadow: inset 0 4px 10px rgba(0,0,0,0.25);
 }
 
-.history {
-  max-height: 120px;
-  overflow-y: auto;
-  background: rgba(0,0,0,0.3);
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.hidden {
-  display: none;
-}
+/* ================= BUTTON GRIDS ================= */
 
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
-.scientific {
-  margin-bottom: 10px;
+.extra {
+  margin-bottom: 14px;
 }
+
+/* ================= BUTTON STYLE ================= */
 
 button {
-  height: 45px;
+  height: 52px;
   border: none;
-  border-radius: 12px;
+  border-radius: 16px;
   font-size: 16px;
   cursor: pointer;
-  background: rgba(255,255,255,0.25);
+  transition: 0.25s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+/* DARK MODE BUTTONS */
+body.dark button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: #fff;
-  transition: 0.2s;
+}
+
+/* LIGHT MODE BUTTONS */
+body.light button {
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  color: #000;
 }
 
 button:hover {
-  transform: scale(1.05);
-  background: rgba(255,255,255,0.4);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
 }
 
+/* ================= SPECIAL BUTTONS ================= */
+
 .equal {
-  background: #00d2d3;
-  color: #000;
+  background: linear-gradient(135deg, #00f260, #0575e6) !important;
+  color: #fff !important;
+  font-weight: bold;
 }
 
 .zero {
   grid-column: span 2;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  text-align: center;
+  margin-top: 35px;
+  font-size: 14px;
+  opacity: 0.8;
 }
